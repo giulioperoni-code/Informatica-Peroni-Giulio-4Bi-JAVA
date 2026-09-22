@@ -2,22 +2,38 @@ package logica;
 
 import java.util.Arrays;
 
+/**
+ * Gestisce una collezione a capacita fissa di telefilm.
+ */
 public class CollezioneTelefilm {
 
+    /** Array che contiene i telefilm della collezione. */
     private Telefilm[] listaTelefilm;
+    /** Numero di telefilm effettivamente inseriti. */
     private int numTelefilm; // numero di telefilm effettivamente inseriti
     
 
+    /**
+     * Crea una collezione con la capacita indicata.
+     *
+     * @param numTelefilm capacita massima della collezione
+     */
     public CollezioneTelefilm(int numTelefilm) {
         this.listaTelefilm = new Telefilm[numTelefilm];
         this.numTelefilm = 0;
     }
 
+    /**
+     * Crea una collezione con capacita predefinita pari a 10 telefilm.
+     */
     public CollezioneTelefilm() {
         this(10); // dimensione predefinita di 10
     }
-
-
+    /**
+     * Aggiunge un telefilm alla prima posizione libera.
+     *
+     * @param telefilm telefilm da aggiungere
+     */
     public void aggiungiTelefilm(Telefilm telefilm) {
         if (numTelefilm < listaTelefilm.length) {
             listaTelefilm[numTelefilm] = telefilm;
@@ -27,6 +43,9 @@ public class CollezioneTelefilm {
         }
     }
 
+    /**
+     * Ordina i telefilm inseriti in ordine alfabetico per nome.
+     */
     public void ordinaTelefilmPerNome() {
         // Ordinamento a bolle (bubble sort) delle prime numTelefilm posizioni
         for (int i = 0; i < numTelefilm - 1; i++) {
@@ -40,24 +59,47 @@ public class CollezioneTelefilm {
             }
         }
     }
-
-
+    /**
+     * Imposta l'array dei telefilm.
+     *
+     * @param listaTelefilm nuovo array dei telefilm
+     */
 	public void setListaTelefilm(Telefilm[] listaTelefilm) {
 		this.listaTelefilm = listaTelefilm;
 	}
 
+    /**
+     * Imposta il numero di telefilm inseriti.
+     *
+     * @param numTelefilm nuovo numero di telefilm inseriti
+     */
 	public void setNumTelefilm(int numTelefilm) {
 		this.numTelefilm = numTelefilm;
 	}
 
+    /**
+     * Restituisce l'array dei telefilm.
+     *
+     * @return array dei telefilm
+     */
 	public Telefilm[] getListaTelefilm() {
 		return listaTelefilm;
 	}
 
+    /**
+     * Restituisce il numero di telefilm inseriti.
+     *
+     * @return numero di telefilm inseriti
+     */
 	public int getNumTelefilm() {
 		return numTelefilm;
 	}
 
+    /**
+     * Restituisce una rappresentazione testuale della collezione.
+     *
+     * @return dati della collezione in formato testuale
+     */
 	@Override
 	public String toString() {
 		return "CollezioneTelefilm [getListaTelefilm()=" + Arrays.toString(getListaTelefilm()) + ", getNumTelefilm()="

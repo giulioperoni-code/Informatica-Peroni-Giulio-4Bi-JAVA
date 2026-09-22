@@ -6,7 +6,19 @@ import logica.Stagione;
 import logica.Stato;
 import logica.Telefilm;
 
+/**
+ * Punto di ingresso dell'applicazione per la gestione dei telefilm.
+ */
 public class MainTelefilm {
+    /** Impedisce l'istanziazione della classe principale. */
+    private MainTelefilm() {
+    }
+
+    /**
+     * Acquisisce i dati, crea un telefilm e mostra le operazioni richieste.
+     *
+     * @param args argomenti della riga di comando, non utilizzati
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -45,6 +57,13 @@ public class MainTelefilm {
         scanner.close();
     }
 
+    /**
+     * Legge una stringa non vuota dalla tastiera.
+     *
+     * @param scanner scanner usato per leggere l'input
+     * @param messaggio messaggio mostrato all'utente
+     * @return testo inserito dall'utente
+     */
     private static String leggiTesto(Scanner scanner, String messaggio) {
         String testo;
         do {
@@ -54,6 +73,13 @@ public class MainTelefilm {
         return testo;
     }
 
+    /**
+     * Legge dalla tastiera un numero intero positivo.
+     *
+     * @param scanner scanner usato per leggere l'input
+     * @param messaggio messaggio mostrato all'utente
+     * @return numero intero positivo inserito dall'utente
+     */
     private static int leggiInteroPositivo(Scanner scanner, String messaggio) {
         while (true) {
             try {
@@ -68,6 +94,12 @@ public class MainTelefilm {
         }
     }
 
+    /**
+     * Legge e converte lo stato della produzione.
+     *
+     * @param scanner scanner usato per leggere l'input
+     * @return stato selezionato dall'utente
+     */
     private static Stato leggiStato(Scanner scanner) {
         while (true) {
             String valore = leggiTesto(scanner, "Stato (IN_CORSO o TERMINATO): ").toUpperCase();
@@ -79,6 +111,12 @@ public class MainTelefilm {
         }
     }
 
+    /**
+     * Legge e converte il genere del telefilm.
+     *
+     * @param scanner scanner usato per leggere l'input
+     * @return genere selezionato dall'utente
+     */
     private static Genere leggiGenere(Scanner scanner) {
         while (true) {
             String valore = leggiTesto(scanner, "Genere: ").toUpperCase();
