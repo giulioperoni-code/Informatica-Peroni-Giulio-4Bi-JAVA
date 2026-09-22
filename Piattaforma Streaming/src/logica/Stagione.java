@@ -7,6 +7,13 @@ public class Stagione {
     private String trama;
     private int numeroStagione;
 
+    /**
+     * 
+     * @param numeroEpisodi numero di eopisodi della stagione
+     * @param nomeSceneggiatore nome dello sceneggiatore della stagione
+     * @param trama trama della stagione
+     * @param numeroStagione numero della stagione
+     */
     public Stagione(int numeroEpisodi, String nomeSceneggiatore, String trama, int numeroStagione) {
         this.numeroEpisodi = numeroEpisodi;
         this.nomeSceneggiatore = nomeSceneggiatore;
