@@ -9,7 +9,7 @@ public class Stagione {
 
     /**
      * 
-     * @param numeroEpisodi numero di eopisodi della stagione
+     * @param numeroEpisodi numero di episodi della stagione
      * @param nomeSceneggiatore nome dello sceneggiatore della stagione
      * @param trama trama della stagione
      * @param numeroStagione numero della stagione
@@ -26,7 +26,7 @@ public class Stagione {
         this.numeroEpisodi = 0;
         this.nomeSceneggiatore = "";
         this.trama = "";
-        this.numeroStagione = 0;
+        this.numeroStagione = 1;
     }
 
     // setter
