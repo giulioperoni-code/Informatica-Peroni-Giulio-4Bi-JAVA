@@ -17,8 +17,12 @@ public class CollezioneTelefilm {
      * Crea una collezione con la capacita indicata.
      *
      * @param numTelefilm capacita massima della collezione
+     * @throws IllegalArgumentException se la capacita non e positiva
      */
     public CollezioneTelefilm(int numTelefilm) {
+        if (numTelefilm <= 0) {
+            throw new IllegalArgumentException("La capacita deve essere positiva.");
+        }
         this.listaTelefilm = new Telefilm[numTelefilm];
         this.numTelefilm = 0;
     }
@@ -63,8 +67,12 @@ public class CollezioneTelefilm {
      * Imposta l'array dei telefilm.
      *
      * @param listaTelefilm nuovo array dei telefilm
+     * @throws IllegalArgumentException se l'array e nullo
      */
 	public void setListaTelefilm(Telefilm[] listaTelefilm) {
+        if (listaTelefilm == null) {
+            throw new IllegalArgumentException("La lista dei telefilm non puo essere nulla.");
+        }
 		this.listaTelefilm = listaTelefilm;
 	}
 
@@ -72,8 +80,12 @@ public class CollezioneTelefilm {
      * Imposta il numero di telefilm inseriti.
      *
      * @param numTelefilm nuovo numero di telefilm inseriti
+     * @throws IllegalArgumentException se il numero non e compreso nella capacita dell'array
      */
 	public void setNumTelefilm(int numTelefilm) {
+        if (numTelefilm < 0 || numTelefilm > listaTelefilm.length) {
+            throw new IllegalArgumentException("Il numero di telefilm non e valido.");
+        }
 		this.numTelefilm = numTelefilm;
 	}
 

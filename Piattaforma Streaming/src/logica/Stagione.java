@@ -21,13 +21,13 @@ public class Stagione {
      * @param nomeSceneggiatore nome dello sceneggiatore della stagione
      * @param trama trama della stagione
      * @param numeroStagione numero della stagione
+      * @throws IllegalArgumentException se un valore non e valido
      */
     public Stagione(int numeroEpisodi, String nomeSceneggiatore, String trama, int numeroStagione) {
-        this.numeroEpisodi = numeroEpisodi;
-        this.nomeSceneggiatore = nomeSceneggiatore;
-        this.trama = trama;
-        this.numeroStagione = numeroStagione;
-
+          setNumeroEpisodi(numeroEpisodi);
+          setNomeSceneggiatore(nomeSceneggiatore);
+          setTrama(trama);
+          setNumeroStagione(numeroStagione);
     }
 
     /**
@@ -44,8 +44,12 @@ public class Stagione {
      * Imposta il numero di episodi.
      *
      * @param numeroEpisodi nuovo numero di episodi
+    * @throws IllegalArgumentException se il numero non e positivo
      */
     public void setNumeroEpisodi(int numeroEpisodi) {
+        if (numeroEpisodi <= 0) {
+            throw new IllegalArgumentException("Il numero di episodi deve essere positivo.");
+        }
         this.numeroEpisodi = numeroEpisodi;
     }
 
@@ -53,8 +57,12 @@ public class Stagione {
      * Imposta il nome dello sceneggiatore.
      *
      * @param nomeSceneggiatore nuovo nome dello sceneggiatore
+    * @throws IllegalArgumentException se il nome e nullo o vuoto
      */
     public void setNomeSceneggiatore(String nomeSceneggiatore) {
+        if (nomeSceneggiatore == null || nomeSceneggiatore.trim().isEmpty()) {
+            throw new IllegalArgumentException("Il nome dello sceneggiatore non puo essere vuoto.");
+        }
         this.nomeSceneggiatore = nomeSceneggiatore;
     }
 
@@ -62,8 +70,12 @@ public class Stagione {
      * Imposta la trama.
      *
      * @param trama nuova trama della stagione
+    * @throws IllegalArgumentException se la trama e nulla o vuota
      */
     public void setTrama(String trama) {
+        if (trama == null || trama.trim().isEmpty()) {
+            throw new IllegalArgumentException("La trama non puo essere vuota.");
+        }
         this.trama = trama;
     }
 
@@ -71,8 +83,12 @@ public class Stagione {
      * Imposta il numero della stagione.
      *
      * @param numeroStagione nuovo numero della stagione
+    * @throws IllegalArgumentException se il numero non e positivo
      */
     public void setNumeroStagione(int numeroStagione) {
+        if (numeroStagione <= 0) {
+            throw new IllegalArgumentException("Il numero della stagione deve essere positivo.");
+        }
         this.numeroStagione = numeroStagione;
     }
     /**

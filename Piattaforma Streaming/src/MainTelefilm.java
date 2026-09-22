@@ -22,16 +22,35 @@ public class MainTelefilm {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        try {
+            avviaApplicazione(scanner);
+        } catch (Exception exception) {
+            System.out.println("Errore: " + exception.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+
+    /**
+     * Esegue il flusso principale dell'applicazione.
+     *
+     * @param scanner scanner usato per leggere l'input
+     */
+    private static void avviaApplicazione(Scanner scanner) {
+
         String nome = leggiTesto(scanner, "Inserisci il nome del telefilm: ");
         Genere genere = leggiGenere(scanner);
         Stato stato = leggiStato(scanner);
-        int numeroStagioni = leggiInteroPositivo(scanner, "Inserisci il numero di stagioni: ");
+        System.out.print("Inserisci il numero di stagioni: ");
+        int numeroStagioni = Integer.parseInt(scanner.nextLine().trim());
         Stagione[] stagioni = new Stagione[numeroStagioni];
 
         for (int i = 0; i < numeroStagioni; i++) {
             System.out.println("\nDati della stagione " + (i + 1));
-            int numeroStagione = leggiInteroPositivo(scanner, "Numero della stagione: ");
-            int numeroEpisodi = leggiInteroPositivo(scanner, "Numero di episodi: ");
+            System.out.print("Numero della stagione: ");
+            int numeroStagione = Integer.parseInt(scanner.nextLine().trim());
+            System.out.print("Numero di episodi: ");
+            int numeroEpisodi = Integer.parseInt(scanner.nextLine().trim());
             String nomeSceneggiatore = leggiTesto(scanner, "Nome dello sceneggiatore: ");
             String trama = leggiTesto(scanner, "Trama: ");
             stagioni[i] = new Stagione(numeroEpisodi, nomeSceneggiatore, trama, numeroStagione);
@@ -54,7 +73,6 @@ public class MainTelefilm {
         System.out.println("\nCollezione ordinata:");
         System.out.println(collezione);
 
-        scanner.close();
     }
 
     /**
@@ -71,27 +89,6 @@ public class MainTelefilm {
             testo = scanner.nextLine().trim();
         } while (testo.isEmpty());
         return testo;
-    }
-
-    /**
-     * Legge dalla tastiera un numero intero positivo.
-     *
-     * @param scanner scanner usato per leggere l'input
-     * @param messaggio messaggio mostrato all'utente
-     * @return numero intero positivo inserito dall'utente
-     */
-    private static int leggiInteroPositivo(Scanner scanner, String messaggio) {
-        while (true) {
-            try {
-                System.out.print(messaggio);
-                int valore = Integer.parseInt(scanner.nextLine().trim());
-                if (valore > 0) {
-                    return valore;
-                }
-            } catch (NumberFormatException exception) {
-            }
-            System.out.println("Inserisci un numero intero positivo.");
-        }
     }
 
     /**

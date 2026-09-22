@@ -19,7 +19,10 @@ public class Telefilm {
      * Crea un telefilm vuoto con valori predefiniti.
      */
     public Telefilm() {
-        this("", Stato.IN_CORSO, Genere.DRAMMATICO, new Stagione[0]);
+        this.nome = "";
+        this.stato = Stato.IN_CORSO;
+        this.genere = Genere.DRAMMATICO;
+        this.stagioni = new Stagione[0];
     }
     /**
      * Crea un telefilm con i dati specificati.
@@ -30,10 +33,10 @@ public class Telefilm {
      * @param stagioni stagioni del telefilm
      */
     public Telefilm(String nome, Stato stato, Genere genere, Stagione[] stagioni) {
-        this.nome = nome;
-        this.stato = stato;
-        this.genere = genere;
-        this.stagioni = stagioni;
+        setNome(nome);
+        setStato(stato);
+        setGenere(genere);
+        setStagioni(stagioni);
     }
     /**
      * Calcola il numero medio di episodi per stagione.
@@ -89,8 +92,12 @@ public class Telefilm {
      * Imposta il nome del telefilm.
      *
      * @param nome nuovo nome del telefilm
+     * @throws IllegalArgumentException se il nome e vuoto
      */
     public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Il nome del telefilm non puo essere vuoto.");
+        }
         this.nome = nome;
     }
 
@@ -98,8 +105,12 @@ public class Telefilm {
      * Imposta lo stato della produzione.
      *
      * @param stato nuovo stato della produzione
+     * @throws IllegalArgumentException se lo stato e nullo
      */
     public void setStato(Stato stato) {
+        if (stato == null) {
+            throw new IllegalArgumentException("Lo stato non puo essere nullo.");
+        }
         this.stato = stato;
     }
 
@@ -107,8 +118,12 @@ public class Telefilm {
      * Imposta il genere del telefilm.
      *
      * @param genere nuovo genere del telefilm
+     * @throws IllegalArgumentException se il genere e nullo
      */
     public void setGenere(Genere genere) {
+        if (genere == null) {
+            throw new IllegalArgumentException("Il genere non puo essere nullo.");
+        }
         this.genere = genere;
     }
 
@@ -116,8 +131,17 @@ public class Telefilm {
      * Imposta le stagioni del telefilm.
      *
      * @param stagioni nuovo insieme di stagioni
+     * @throws IllegalArgumentException se l'array e nullo o contiene valori nulli
      */
     public void setStagioni(Stagione[] stagioni) {
+        if (stagioni == null) {
+            throw new IllegalArgumentException("L'array delle stagioni non puo essere nullo.");
+        }
+        for (Stagione stagione : stagioni) {
+            if (stagione == null) {
+                throw new IllegalArgumentException("Una stagione non puo essere nulla.");
+            }
+        }
         this.stagioni = stagioni;
     }
 
