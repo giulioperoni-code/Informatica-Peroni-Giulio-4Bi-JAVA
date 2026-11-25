@@ -1,9 +1,10 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        Libro libro = new Libro("L001", "Il Signore degli Anelli", "J. R. R. Tolkien");
-        DVD dvd = new DVD("D001", "Interstellar", 169);
+        Materiale m = new Materiale("C1", "OOP - no pronplem");
 
-        System.out.println(libro);
-        System.out.println(dvd);
+        System.out.println(m.descrizione());
+
+        Libro l1 = new Libro("C2", "Ereditarietà", "Montini");
+        System.out.println(l1.descrizione());
     }
 }
